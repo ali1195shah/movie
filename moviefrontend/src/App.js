@@ -72,6 +72,9 @@ export class App extends Component {
     //     cart: [...this.state.cart, data]
     //   })
 
+
+    
+
       fetch(`http://localhost:3000/transactions`, {
         method: 'POST',
         headers: {
