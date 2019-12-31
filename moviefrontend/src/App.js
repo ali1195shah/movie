@@ -6,6 +6,7 @@ import ShowMovieDetails from './components/ShowMovieDetails';
 import Navbar from './components/Navbar'
 import LoginForm from './components/LoginForm' 
 import CartMap from './components/CartMap'
+import UserSettingPage from './components/UserSettingPage'
 
 export class App extends Component {
   
@@ -17,7 +18,8 @@ export class App extends Component {
     loggedInUserId: localStorage.userId,
     cart: [],
     searchedMovie: [],
-    movieUserOwn: []
+    movieUserOwn: [],
+    userInfo: []
     
   }
 
@@ -115,8 +117,15 @@ export class App extends Component {
     })
   }
 
-
-
+  userSetting = () => {
+    fetch(`http://localhost:3000/users/${this.state.loggedInUserId}`)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        userInfo: data
+      })
+    })
+  }
 
   
   render() {
@@ -124,12 +133,13 @@ export class App extends Component {
     return (
     <div>
         {this.state.singleMovie ? <Redirect to="/movie-details" /> : <Redirect to="/movies" />}
-        <Navbar goBack={ this.goBack } cart={ this.state.cart } signout={ this.signout } token={this.state.token} searchMovie={ this.searchMovie } signout={ this.signout }/>
+        <Navbar goBack={ this.goBack } cart={ this.state.cart } signout={ this.signout } token={this.state.token} searchMovie={ this.searchMovie } signout={ this.signout } userSetting={ this.userSetting }/>
         <Switch>
           <Route exact path={'/login'} render={(props) => <LoginForm {...props} setToken={ this.setToken } />} />
           <Route exact path={'/movies'} render={(props) => <AllMovieDisplay {...props} allMovies={this.state.movies} showInfoOnMovie={this.showInfoOnMovie} userInput={this.state.searchedMovie} />} />
           <Route exact path={'/movie-details'} render={(props) => <ShowMovieDetails {...props} showInfoOnMovie={this.showInfoOnMovie} singleMovie={this.state.isPresent} goBack={this.goBack} addToCart={ this.addToCart } />}/>
           <Route exact path={'/past-orders'} render={(...props)=> <CartMap {...props} cart={ this.state.cart } placeOrder={ this.placeOrder } remove={ this.removeFromCart } user={ this.state.loggedInUserId } moviesThatTheUserHas={ this.moviesThatTheUserHas }/>}/>
+          <Route exact path={'/edit-profile'} render={(...props)=> <UserSettingPage {...props} userSettingInfo={ this.state.userInfo } />} />
         </Switch>
         {this.state.token ? null : <Redirect to='/login' />}
 

@@ -29,6 +29,13 @@ export class Navbar extends Component {
               </Link>
 
               : null }
+
+                {this.props.token ? 
+                <Link to='/edit-profile'>
+                <button onClick={ this.props.userSetting } className="glow-on-hover" type="button">Edit Profile</button>
+                {/* <button className="glow-on-hover" type="button">Cart: { this.props.cart.length }</button> */}
+                </Link>
+               : null}
               
               {this.props.token ? 
               <Link to='/temp1'>

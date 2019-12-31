@@ -36,6 +36,7 @@ export class ShowMovieDetails extends Component {
                         title='video'
                         width='750'
                         height='342'/>}
+                        
         
                             
                     <div className="details">
