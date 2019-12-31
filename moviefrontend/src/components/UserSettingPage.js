@@ -9,7 +9,32 @@ export class UserSettingPage extends Component {
     }
 
     handleChangeUsername = (e) => {
-        console.log(e.target.value);
+        console.log(e.target.value)
+        this.setState({
+          newUserName: e.target.value
+        })
+    }
+
+    handleChangePassword = (e) => {
+      console.log(e.target.value)
+      this.setState({
+        newPassword: e.target.value
+      })
+    }
+
+    handleUpdatedThings = () => {
+      fetch(`http://localhost:3000/users/${this.props.userSettingInfo.id}`, {
+        method: 'PATCH',
+        headers: ({
+          'Content-Type': 'Application/json'
+        }),
+        body: JSON.stringify({
+          username: this.state.newUserName,
+          password: this.state.newPassword
+        })
+      })
+      .then(res => res.json())
+      .then(console.log)
     }
 
     render() {
@@ -35,7 +60,7 @@ export class UserSettingPage extends Component {
         <form className='form' >
   <div className='control'>
     <h1>
-      Change Username and Password
+      Change Username
     </h1>
   </div>
   <div className='control block-cube block-input'>
@@ -50,8 +75,13 @@ export class UserSettingPage extends Component {
       <div className='bg-inner'></div>
     </div>
   </div>
+
+  <h1>
+      Change Password
+    </h1>
+    <br />
   <div className='control block-cube block-input'>
-    <input name='password' placeholder='Password' type='password' />
+    <input onChange={ this.handleChangePassword } name='password' placeholder='Password' type='password' />
     <div className='bg-top'>
       <div className='bg-inner'></div>
     </div>
@@ -62,7 +92,8 @@ export class UserSettingPage extends Component {
       <div className='bg-inner'></div>
     </div>
   </div>
-  <button className='btn block-cube block-cube-hover' type='button'>
+
+  <button onClick={this.handleUpdatedThings } className='btn block-cube block-cube-hover' type='button' >
     <div className='bg-top'>
       <div className='bg-inner'></div>
     </div>
