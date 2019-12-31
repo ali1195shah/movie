@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import './UserSetting.scss'
+import {Button, ButtonToolbar} from 'react-bootstrap'
+import ModalComponent from './ModalComponent'
 
 export class UserSettingPage extends Component {
 
     state = {
         newUserName: "",
-        newPassword: ""
+        newPassword: "",
+        addModalShow: false
+    }
+
+    addModalClose = () => {
+      this.setState({
+        addModalShow: false
+      })
     }
 
     handleChangeUsername = (e) => {
@@ -34,7 +43,9 @@ export class UserSettingPage extends Component {
         })
       })
       .then(res => res.json())
-      .then(console.log)
+      this.setState({
+        addModalShow: true
+      })
     }
 
     render() {
@@ -93,7 +104,9 @@ export class UserSettingPage extends Component {
     </div>
   </div>
 
-  <button onClick={this.handleUpdatedThings } className='btn block-cube block-cube-hover' type='button' >
+  <ButtonToolbar>
+
+  <button onClick={this.handleUpdatedThings} className='btn block-cube block-cube-hover' type='button' >
     <div className='bg-top'>
       <div className='bg-inner'></div>
     </div>
@@ -107,9 +120,12 @@ export class UserSettingPage extends Component {
       Save
     </div>
   </button>
+  <ModalComponent 
+        show={this.state.addModalShow}
+        onHide={this.addModalClose}/>
+      </ButtonToolbar>
 </form>
-
-    </div>
+</div>
         );
     }
 }
