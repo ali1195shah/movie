@@ -49,8 +49,11 @@ ActiveRecord::Schema.define(version: 2019_12_19_144549) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "username"
     t.string "password_digest"
+    t.string "cc_number"
+    t.string "cc_s_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

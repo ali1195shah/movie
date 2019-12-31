@@ -5,8 +5,11 @@ class LoginForm extends React.Component {
 
   state = {
     logIn: true,
+    name: "",
     username: "",
     password: "",
+    ccNumber: "",
+    cvcNumber: "",
     errors: [],
     userid: null,
     cart: []
@@ -71,8 +74,11 @@ class LoginForm extends React.Component {
           'Content-Type': 'Application/json'
         },
         body: JSON.stringify({
+          name: e.target['sign_up_name'].value,
           username: e.target['sign_up_username'].value,
-          password: e.target['sign_up_password'].value
+          password: e.target['sign_up_password'].value,
+          cc_number: e.target['sign_up_ccNumber'].value,
+          cc_s_code: e.target['sign_up_cvcNumber'].value
         })
       })
       .then(r => r.json())
@@ -183,6 +189,14 @@ class LoginForm extends React.Component {
           <br></br>
           <form onSubmit={ this.signUpSubmitted }>
           <br></br>
+          <label  htmlFor="sign_up_name">Name</label>
+            <br></br>
+            <input  id="sign_up_name" 
+                    type="text" 
+                    onChange={ this.onChange } 
+                    name="name" 
+                    value={ this.state.name } />
+                    <br></br><br></br>
             <label  htmlFor="sign_up_username">Username</label>
             <br></br>
             <input  id="sign_up_username" 
@@ -198,6 +212,22 @@ class LoginForm extends React.Component {
                     onChange={ this.onChange } 
                     name="password" 
                     value={ this.state.password } />
+                    <br></br><br></br>
+                    <label  htmlFor="sign_up_ccNumber">Credit Card Number</label>
+            <br></br>
+            <input  id="sign_up_ccNumber" 
+                    type="text" 
+                    onChange={ this.onChange } 
+                    name="ccNumber" 
+                    value={ this.state.ccNumber } />
+                    <br></br><br></br>
+                    <label  htmlFor="sign_up_name">CVC Number</label>
+            <br></br>
+            <input  id="sign_up_cvcNumber" 
+                    type="text" 
+                    onChange={ this.onChange } 
+                    name="cvcNumber" 
+                    value={ this.state.cvcNumber } />
                     <br></br><br></br>
             <input type="submit" />
           </form>

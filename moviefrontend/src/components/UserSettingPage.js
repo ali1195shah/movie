@@ -49,7 +49,7 @@ export class UserSettingPage extends Component {
     }
 
     render() {
-        
+        console.log(this.props.userSettingInfo.username)
         return (
     //         <div>
     //             <p>{ this.props.userSettingInfo.username }</p>
@@ -65,6 +65,7 @@ export class UserSettingPage extends Component {
     //     />
     //     <input type="submit" style={{fontSize: "18px", border: "solid", borderWidth: "1px", borderColor: "#929ca7", margin: "20px", padding: "5px"}} />
     //   </form>
+    // 
     //         </div>
 
     <div>
@@ -75,7 +76,7 @@ export class UserSettingPage extends Component {
     </h1>
   </div>
   <div className='control block-cube block-input'>
-    <input onChange={ this.handleChangeUsername } name='username' placeholder='Enter new Username' type='text' />
+    <input onChange={ this.handleChangeUsername } name='username' placeholder={this.props.userSettingInfo.username} type='text' />
     <div className='bg-top'>
       <div className='bg-inner'></div>
     </div>
