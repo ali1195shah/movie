@@ -64,7 +64,7 @@ export class UserSettingPage extends Component {
     </h1>
   </div>
   <div className='control block-cube block-input'>
-    <input onChange={ this.handleChangeUsername } name='username' placeholder='Username' type='text' />
+    <input onChange={ this.handleChangeUsername } name='username' placeholder='Enter new Username' type='text' />
     <div className='bg-top'>
       <div className='bg-inner'></div>
     </div>
@@ -81,7 +81,7 @@ export class UserSettingPage extends Component {
     </h1>
     <br />
   <div className='control block-cube block-input'>
-    <input onChange={ this.handleChangePassword } name='password' placeholder='Password' type='password' />
+    <input onChange={ this.handleChangePassword } name='password' placeholder='Enter new Password' type='password' />
     <div className='bg-top'>
       <div className='bg-inner'></div>
     </div>
