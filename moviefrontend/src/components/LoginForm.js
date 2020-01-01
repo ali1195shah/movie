@@ -147,7 +147,7 @@ class LoginForm extends React.Component {
   }
 
   render(){
-    return <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"}}>
+    return <div style={{textAlign: "Center", marginTop:"10%", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "white"}}>
       <ul>
         {
           this.state.errors.map(error => <li>{ error }</li>)
