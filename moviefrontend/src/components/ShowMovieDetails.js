@@ -19,7 +19,10 @@ export class ShowMovieDetails extends Component {
                         allowFullScreen
                         title='video'
                         width='690'
-                        height='300'/> */}
+                        height='300'/>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2cv2ueYnKjg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        
+                        */}
                 <div className="movie-card">
   
                 <div className="container">
@@ -29,7 +32,7 @@ export class ShowMovieDetails extends Component {
 
                         
                     <div className="hero" style={{transformOrigin: '0 0'}}>
-                        {<iframe src='https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&autoplay=1'
+                        {<iframe src={this.props.singleMovie.video + '?rel=0&autoplay=1'}
                         frameBorder='0'
                         allow='autoplay; encrypted-media'
                         allowFullScreen

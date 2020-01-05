@@ -20,6 +20,7 @@ class CreateFlims < ActiveRecord::Migration[6.0]
       t.string :imdb_votes
       t.string :production
       t.string :box_office
+      t.string :video
 
       t.timestamps
     end

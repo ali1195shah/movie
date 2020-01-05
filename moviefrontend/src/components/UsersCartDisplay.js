@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './UsersCartDisplay.scss'
+import {Button, ButtonToolbar} from 'react-bootstrap'
+import RickRoll from './RickRollModal'
 
-const UsersCartDisplay = (props) => {
-    const image = props.item.poster_img
-    console.log(props.item.flim.flim)
-    return (
-        <div id={props.item.flim.id}>
+export class UsersCartDisplay extends Component {
+
+
+    state = {
+        addModalShow: false
+    }
+
+    addModalClose = () => {
+        this.setState({
+          addModalShow: false
+        })
+      }
+
+    render() {
+        const image = this.props.item.flim.poster_img
+        return (
+            <div id={this.props.item.flim.id}>
                 <div className="cart_movie_card" id="bright">
                 <div className="cart_info_section">
                     <div className="cart_movie_header">
-                    <img className="cart_locandina" src={props.item.flim.poster_img} alt={props.item.flim.title}/>
-                    <h3>{props.item.flim.title}</h3>
-                    <h4>{props.item.flim.year}, {props.item.flim.director}</h4>
-                    <span className="cart_minutes">{props.item.flim.runtime}</span>
-                    <p className="cart_type">{props.item.flim.genre}</p>
+                    <img className="cart_locandina" src={this.props.item.flim.poster_img} alt={this.props.item.flim.title}/>
+                    <h3>{this.props.item.flim.title}</h3>
+                    <h4>{this.props.item.flim.year}, {this.props.item.flim.director}</h4>
+                    <span className="cart_minutes">{this.props.item.flim.runtime}</span>
+                    <p className="cart_type">{this.props.item.flim.genre}</p>
                     <br/>
                     </div>
                     <div className="cart_movie_desc">
-                    <p className="cart_text">{props.item.flim.plot}</p>
+                    <p className="cart_text">{this.props.item.flim.plot}</p>
                     </div>
                     <div className="cart_movie_social">
                     <ul>
@@ -28,11 +42,21 @@ const UsersCartDisplay = (props) => {
                     </div>
                 </div>
                 <div className="blur_back bright_back" style={{backgroundImage: `url(${image})` }}>
-                    {/* <img alt={props.item.flim.title} src={props.item.poster_img} style={{width: '70%', height: '350px'}}/> */}
+                    {/* <img alt={this.props.item.flim.title} src={this.props.item.poster_img} style={{width: '70%', height: '350px'}}/> */}
                 </div>
+                
                 </div>
+                <ButtonToolbar>
+                    <Button onClick={ () => this.setState({addModalShow: true})}>Watch Movie</Button>
+                    <RickRoll 
+                    show={this.state.addModalShow}
+                    onHide={this.addModalClose}/>
+                </ButtonToolbar>
+                
             </div>
-    );
+        );
+    }
 }
+
 
 export default UsersCartDisplay;

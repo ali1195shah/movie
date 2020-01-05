@@ -88,7 +88,7 @@ export class UserSettingPage extends Component {
     </div>
   </div>
 
-  <h1>
+    <h1>
       Change Password
     </h1>
     <br />
@@ -104,6 +104,20 @@ export class UserSettingPage extends Component {
       <div className='bg-inner'></div>
     </div>
   </div>
+  <br />
+
+  {/* <div className='control block-cube block-input'>
+    <input onChange={ this.handleChangePassword } name='password' placeholder='Enter new Password' type='password' />
+    <div className='bg-top'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg-right'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg'>
+      <div className='bg-inner'></div>
+    </div>
+  </div> */}
 
   <ButtonToolbar>
 

@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_144549) do
     t.string "imdb_votes"
     t.string "production"
     t.string "box_office"
+    t.string "video"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

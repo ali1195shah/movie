@@ -8,7 +8,8 @@
 
 User.create(name: 'ali', username: 'alibaba', password: '123', cc_number: '4242424242424242', cc_s_code: '123')
 
-flim_arr = ['tt3896198', 
+flim_arr = [
+  'tt3896198',
   'tt2015381',
   'tt0848228', 
   'tt4154756',
@@ -48,8 +49,51 @@ flim_arr = ['tt3896198',
   'tt0086190'
 ]
 
+youtube_vids = [
+  'https://www.youtube.com/embed/dW1BIid8Osg',
+  'https://www.youtube.com/embed/h5BAEs6m_EI',
+  'https://www.youtube.com/embed/eOrNdBpGMv8',
+  'https://www.youtube.com/embed/QwievZ1Tx-8',
+  'https://www.youtube.com/embed/tmeOjFno6Do',
+  'https://www.youtube.com/embed/hA6hldpSTF8',
+  'https://www.youtube.com/embed/LNaIewXwLHs',
+  'https://www.youtube.com/embed/_wUcbN34leM',
+  'https://www.youtube.com/embed/gaBdgu00otE',
+  'https://www.youtube.com/embed/BmkvuHpfrkk',
+  'https://www.youtube.com/embed/2AUmvWm5ZDQ',
+  'https://www.youtube.com/embed/XGk2EfbD_Ps',
+  'https://www.youtube.com/embed/pU8-7BX9uxs',
+  'https://www.youtube.com/embed/JerVrbLldXw',
+  'https://www.youtube.com/embed/7SlILk2WMTI',
+  'https://www.youtube.com/embed/dKrVegVI0Us',
+  'https://www.youtube.com/embed/8ugaeA-nMTc',
+  'https://www.youtube.com/embed/BoohRoVA9WQ',
+  'https://www.youtube.com/embed/oYSD2VQagc4',
+  'https://www.youtube.com/embed/JOddp-nlNvQ',
+  'https://www.youtube.com/embed/npvJ9FTgZbM',
+  'https://www.youtube.com/embed/ue80QwXMRHg',
+  'https://www.youtube.com/embed/xjDjIWPwcPU',
+  'https://www.youtube.com/embed/moY78qMJuxM',
+  'https://www.youtube.com/embed/rNk1Wi8SvNc',
+  'https://www.youtube.com/embed/xNWSGRD5CzU',
+  'https://www.youtube.com/embed/JcpWXaA2qeg',
+  'https://www.youtube.com/embed/wmiIUN-7qhE',
+  'https://www.youtube.com/embed/go6GEIrcvFY',
+  'https://www.youtube.com/embed/QjKO10hKtYw',
+  'https://www.youtube.com/embed/1nWKR-vBRK4',
+  'https://www.youtube.com/embed/sfM7_JLk-84',
+  'https://www.youtube.com/embed/n9DwoQ7HWvI',
+  'https://www.youtube.com/embed/Nt9L1jCKGnE',
+  'https://www.youtube.com/embed/g4Hbz2jLxvQ',
+  'https://www.youtube.com/embed/1g3_CFmnU7k',
+  'https://www.youtube.com/embed/JNwNXF9Y6kY',
+  'https://www.youtube.com/embed/7L8p7_SLzvU'
+]
+
+i = 0
 puts 'Getting movies...'
 flim_arr.each do |imdb_id|
+      youtube_video = youtube_vids[i]
       request_url = "http://www.omdbapi.com/?i=#{imdb_id}&apikey=48a92fd6"
       request = RestClient::Request.execute(
         method: :get,
@@ -74,10 +118,13 @@ flim_arr.each do |imdb_id|
       imdb_rating: movie['imdbRating'],
       imdb_votes: movie['imdbVotes'],
       production: movie['Production'],
-      box_office: movie['BoxOffice']
+      box_office: movie['BoxOffice'],
+      video: youtube_video
     )
+    i += 1
     puts (imdb_id)
 end 
+
 
 
 

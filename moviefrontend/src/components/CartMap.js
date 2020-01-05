@@ -7,7 +7,7 @@ export class CartMap extends Component {
         moviesThatTheUserHas: []
     }
 
-    componentDidMount(){
+    componentWillMount(){
         // console.log("hello")
         fetch(`http://localhost:3000/users/${this.props.user}`)
         .then(r => r.json())
@@ -31,7 +31,7 @@ export class CartMap extends Component {
                 {moviesThatTheUserHas}
                 <div>
                     {/* <button onClick={() => this.props.placeOrder()} className="glow-on-hover" type="button">Place Order</button> */}
-                    <button onClick={() => this.props.remove()} className="glow-on-hover" type="button">Place Order</button>
+                    {/* <button onClick={() => this.props.remove()} className="glow-on-hover" type="button">Place Order</button> */}
                 </div>
             </div>
         );

@@ -39,7 +39,8 @@ export class App extends Component {
 
   goBack = () => {
     this.setState({
-      singleMovie: null
+      singleMovie: null,
+      isPresent: null
     })
   }
 
@@ -129,11 +130,11 @@ export class App extends Component {
 
   
   render() {
-    console.log(this.state) 
+    console.log(this.state.movieUserOwn) 
     return (
     <div>
         {this.state.singleMovie ? <Redirect to="/movie-details" /> : <Redirect to="/movies" />}
-        <Navbar goBack={ this.goBack } cart={ this.state.cart } signout={ this.signout } token={this.state.token} searchMovie={ this.searchMovie } signout={ this.signout } userSetting={ this.userSetting }/>
+        <Navbar goBack={ this.goBack } cart={ this.state.cart } signout={ this.signout } token={this.state.token} searchMovie={ this.searchMovie } userSetting={ this.userSetting }/>
         <Switch>
           <Route exact path={'/login'} render={(props) => <LoginForm {...props} setToken={ this.setToken } />} />
           <Route exact path={'/movies'} render={(props) => <AllMovieDisplay {...props} allMovies={this.state.movies} showInfoOnMovie={this.showInfoOnMovie} userInput={this.state.searchedMovie} />} />

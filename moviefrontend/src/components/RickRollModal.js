@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Modal, Button} from 'react-bootstrap';
-import Loading from './Loading'
+// import Loading from './Loading'
 
 const ModalComponent = (props) => {
   return (
@@ -17,7 +17,13 @@ const ModalComponent = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-          <Loading />
+      {<iframe src={'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&autoplay=1'}
+                        frameBorder='0'
+                        allow='autoplay; encrypted-media'
+                        allowFullScreen
+                        title='video'
+                        width='100%'
+                        height='500'/>}
 
       </Modal.Body>
       <Modal.Footer>
