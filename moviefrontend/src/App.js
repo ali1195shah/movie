@@ -19,7 +19,8 @@ export class App extends Component {
     cart: [],
     searchedMovie: [],
     movieUserOwn: [],
-    userInfo: []
+    userInfo: [],
+    allTransaction: []
     
   }
 
@@ -50,6 +51,13 @@ export class App extends Component {
       this.setState({
         movies,
         searchedMovie: movies
+    })
+    fetch('http://localhost:3000/transactions')
+    .then(response => response.json())
+    .then(res => {
+      this.setState({
+        allTransaction: res
+      })
     })
   }
 
@@ -90,7 +98,9 @@ export class App extends Component {
       })
       .then(r => r.json())
       .then(data => {
-        console.log(data)
+        this.setState({
+          allTransaction: [...this.state.allTransaction, data]
+        })
       })
 
   }
@@ -130,15 +140,15 @@ export class App extends Component {
 
   
   render() {
-    console.log(this.state.movieUserOwn) 
+    
     return (
     <div>
         {this.state.singleMovie ? <Redirect to="/movie-details" /> : <Redirect to="/movies" />}
-        <Navbar goBack={ this.goBack } cart={ this.state.cart } signout={ this.signout } token={this.state.token} searchMovie={ this.searchMovie } userSetting={ this.userSetting }/>
+        <Navbar goBack={ this.goBack } allTransaction={ this.state.allTransaction } cart={ this.state.cart } signout={ this.signout } token={this.state.token} searchMovie={ this.searchMovie } userSetting={ this.userSetting }/>
         <Switch>
           <Route exact path={'/login'} render={(props) => <LoginForm {...props} setToken={ this.setToken } />} />
           <Route exact path={'/movies'} render={(props) => <AllMovieDisplay {...props} allMovies={this.state.movies} showInfoOnMovie={this.showInfoOnMovie} userInput={this.state.searchedMovie} />} />
-          <Route exact path={'/movie-details'} render={(props) => <ShowMovieDetails {...props} showInfoOnMovie={this.showInfoOnMovie} singleMovie={this.state.isPresent} goBack={this.goBack} addToCart={ this.addToCart } />}/>
+          <Route exact path={'/movie-details'} render={(props) => <ShowMovieDetails {...props} showInfoOnMovie={this.showInfoOnMovie} singleMovie={this.state.isPresent}  goBack={this.goBack} addToCart={ this.addToCart } />}/>
           <Route exact path={'/past-orders'} render={(...props)=> <CartMap {...props} cart={ this.state.cart } placeOrder={ this.placeOrder } remove={ this.removeFromCart } user={ this.state.loggedInUserId } moviesThatTheUserHas={ this.moviesThatTheUserHas }/>}/>
           <Route exact path={'/edit-profile'} render={(...props)=> <UserSettingPage {...props} userSettingInfo={ this.state.userInfo } />} />
         </Switch>

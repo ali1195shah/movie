@@ -12,7 +12,7 @@ export class Navbar extends Component {
   }
 
     render() {
-      
+      // console.log(this.props.allTransaction.length)
         return (
 
           <div className="topnav">
@@ -47,6 +47,7 @@ export class Navbar extends Component {
               {this.props.token ? 
               <div className="search__container">
                   <input onChange={(e) => this.props.searchMovie(e)} className="search__input" type="text" placeholder="Search" />
+                  <h1> size: { this.props.allTransaction.length } </h1>
               </div>
                 : null }
             </div>
