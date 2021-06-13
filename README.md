@@ -5,7 +5,6 @@ This application allows users to brows movies and watch trailers of the movie. M
 Watch the demo for this application here!
 https://www.youtube.com/watch?v=13ZB6ZII9rM&t
 
-This is the frontend repo for Home Finder, the backend can be found at the following address: https://github.com/oneilsw/backend-of-homefinder
 
 Languages and Framework
 Front End
