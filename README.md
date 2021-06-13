@@ -22,12 +22,14 @@ JWT Authorization
 
 Installation
 Clone down the repo and cd into the backend directory.
+```
 run rails db:create
 run rails db:migrate
 run rails db:seed
 run rails s
-
+```
 Clone down the repo and cd into the backend directory.
+```
 run npm install
 run npm start
-
+```
